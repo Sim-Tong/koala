@@ -1,3 +1,3 @@
 rootProject.name = "koala"
-include("application")
-include("infrastructure")
+include("koala-application")
+include("koala-infrastructure")
