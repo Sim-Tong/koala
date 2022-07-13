@@ -24,8 +24,8 @@ subprojects {
         plugin("io.spring.dependency-management")
         plugin("org.jetbrains.kotlin.jvm")
         plugin("org.jetbrains.kotlin.plugin.spring")
-        kotlin("plugin.spring") version "1.6.21"
-        kotlin("plugin.jpa") version "1.6.21"
+        plugin("org.jetbrains.kotlin.plugin.spring")
+        plugin("org.jetbrains.kotlin.plugin.jpa")
     }
 
     dependencies {
