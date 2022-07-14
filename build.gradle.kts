@@ -16,12 +16,16 @@ subprojects {
     dependencies {
         implementation(Dependencies.KOTLIN_REFLECT)
         implementation(Dependencies.KOTLIN_JDK)
+        implementation(Dependencies.SPRING_TEST)
+
     }
 }
 
 allprojects {
     group = "comit.simsimpulyi"
     version = "0.0.1-SNAPSHOT"
+
+    apply(plugin="jacoco")
 
     tasks {
         compileKotlin {
