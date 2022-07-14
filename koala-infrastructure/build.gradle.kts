@@ -6,20 +6,18 @@ plugins {
 }
 
 dependencies {
-    implementation(Dependencies.JPA)
     implementation(Dependencies.SPRING_SECURITY)
     implementation(Dependencies.SPRING_VALIDATION)
-    implementation(Dependencies.SPRING_STARTER)
-    runtimeOnly(Dependencies.MYSQL_CONNECTOR)
-    implementation(Dependencies.JACKSON)
-    implementation(Dependencies.JWT)
-    implementation(project(":koala-application"))
-}
+    implementation(Dependencies.SPRING_WEB)
 
-kapt {
-    arguments {
-        arg("mapstruct.defaultComponentModel", "spring")
-    }
+    implementation(Dependencies.JACKSON)
+
+    implementation(Dependencies.SPRING_DATA_JPA)
+    runtimeOnly(Dependencies.MYSQL_CONNECTOR)
+
+    implementation(Dependencies.JWT)
+
+    implementation(project(":koala-application"))
 }
 
 allOpen {
