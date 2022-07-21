@@ -8,7 +8,6 @@ plugins {
 dependencies {
     implementation(Dependencies.SPRING_SECURITY)
     implementation(Dependencies.SPRING_VALIDATION)
-    implementation(Dependencies.SPRING_WEB)
 
     implementation(Dependencies.JACKSON)
 
@@ -30,6 +29,10 @@ noArg {
     annotation("javax.persistence.Entity")
     annotation("javax.persistence.MappedSuperclass")
     annotation("javax.persistence.Embeddable")
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = false
 }
 
 tasks.getByName<Jar>("bootJar") {
