@@ -32,6 +32,6 @@ noArg {
     annotation("javax.persistence.Embeddable")
 }
 
-tasks.getByName<Jar>("jar") {
+tasks.getByName<Jar>("bootJar") {
     enabled = false
 }
