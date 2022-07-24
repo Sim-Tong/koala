@@ -25,7 +25,7 @@ allprojects {
     group = "comit.simsimpulyi"
     version = "0.0.1-SNAPSHOT"
 
-    apply(plugin="jacoco")
+    apply(plugin = "jacoco")
 
     tasks {
         compileKotlin {
@@ -57,7 +57,8 @@ tasks.register<JacocoReport>("jacocoRootReport") {
     subprojects {
         this@subprojects.plugins.withType<JacocoPlugin>().configureEach {
             this@subprojects.tasks.matching {
-                it.extensions.findByType<JacocoTaskExtension>() != null }
+                it.extensions.findByType<JacocoTaskExtension>() != null
+            }
                 .configureEach {
                     sourceSets(this@subprojects.the<SourceSetContainer>().named("main").get())
                     executionData(this)
