@@ -1,6 +1,7 @@
 object Dependencies {
     const val KOTLIN_REFLECT = "org.jetbrains.kotlin:kotlin-reflect"
     const val KOTLIN_JDK = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    const val JAVA_SERVLET = "javax.servlet:javax.servlet-api:3.1.0"
 
     const val SPRING_WEB = "org.springframework.boot:spring-boot-starter-web"
     const val SPRING_VALIDATION = "org.springframework.boot:spring-boot-starter-validation"

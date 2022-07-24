@@ -17,7 +17,7 @@ subprojects {
         implementation(Dependencies.KOTLIN_REFLECT)
         implementation(Dependencies.KOTLIN_JDK)
         implementation(Dependencies.SPRING_TEST)
-
+        implementation(Dependencies.JAVA_SERVLET)
     }
 }
 
