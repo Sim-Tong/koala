@@ -1,3 +1,3 @@
 dependencies {
-    implementation(project(":koala-domain"))
+    api(project(":koala-domain"))
 }
