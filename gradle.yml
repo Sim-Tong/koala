@@ -1,0 +1,6 @@
+org:
+  gradle:
+    daemon: true
+    parallel: true
+    caching: true
+    jvmargs: -Xmx2048M
