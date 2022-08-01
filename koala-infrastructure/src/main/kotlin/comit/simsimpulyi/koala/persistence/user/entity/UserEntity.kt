@@ -2,8 +2,10 @@ package comit.simsimpulyi.koala.persistence.user.entity
 
 import comit.simsimpulyi.koala.domain.user.model.Authority
 import comit.simsimpulyi.koala.persistence.BaseEntity
-import comit.simsimpulyi.koala.persistence.feed.entity.FeedEntity
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Enumerated
+import javax.persistence.Table
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -23,7 +25,4 @@ class UserEntity(
     @field:NotNull
     @Enumerated
     var authority: Authority
-): BaseEntity() {
-    @OneToMany
-    val myFeed: Set<FeedEntity> = mutableSetOf()
-}
+) : BaseEntity()
