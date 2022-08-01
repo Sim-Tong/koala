@@ -2,6 +2,8 @@ package comit.simsimpulyi.koala.persistence.feed.entity
 
 import comit.simsimpulyi.koala.persistence.BaseEntity
 import comit.simsimpulyi.koala.persistence.user.entity.UserEntity
+import org.hibernate.annotations.ColumnDefault
+import org.hibernate.validator.constraints.Length
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.JoinColumn
@@ -14,20 +16,27 @@ import javax.validation.constraints.PositiveOrZero
 @Table(name = "feed")
 class FeedEntity(
     @field:NotNull
-    @Column(length = 100)
+    @field:Length(max = 100)
     var title: String,
 
     @field:NotNull
     @Column(columnDefinition = "LONGTEXT")
     var content: String,
 
-    var isPrivate: Boolean = false,
-
-    @field:PositiveOrZero
-    var likeCount: Int = 0,
+    @ColumnDefault("false")
+    @Column(nullable = false)
+    var isPrivate: Boolean? = false,
 
     @field:NotNull
     @ManyToOne
-    @JoinColumn(name = "user_id", columnDefinition = "binary(16)")
+    @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)")
     val userId: UserEntity
-) : BaseEntity()
+) : BaseEntity() {
+
+    @field:NotNull
+    @field:PositiveOrZero
+    @ColumnDefault("0")
+    @Column(columnDefinition = "INT UNSIGNED")
+    var likeCount: Int = 0
+
+}
