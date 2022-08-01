@@ -4,16 +4,12 @@ import comit.simsimpulyi.koala.persistence.BaseEntity
 import comit.simsimpulyi.koala.persistence.user.entity.UserEntity
 import org.hibernate.annotations.ColumnDefault
 import org.hibernate.validator.constraints.Length
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
-import javax.persistence.Table
+import javax.persistence.*
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.PositiveOrZero
 
 @Entity
-@Table(name = "feed")
+@Table(name = "tb_feed")
 class FeedEntity(
     @field:NotNull
     @field:Length(max = 100)
@@ -30,7 +26,7 @@ class FeedEntity(
     @field:NotNull
     @ManyToOne
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)")
-    val userId: UserEntity
+    val writer: UserEntity
 ) : BaseEntity() {
 
     @field:NotNull
