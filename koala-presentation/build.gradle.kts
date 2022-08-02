@@ -10,7 +10,7 @@ dependencies {
 
     implementation(Dependencies.JACKSON)
 
-    implementation(project(":koala-application"))
+    implementation(project(":koala-infrastructure"))
 }
 
 tasks.getByName<Jar>("jar") {

@@ -16,7 +16,7 @@ dependencies {
 
     implementation(Dependencies.JWT)
 
-    implementation(project(":koala-application"))
+    api(project(":koala-application"))
 }
 
 allOpen {
