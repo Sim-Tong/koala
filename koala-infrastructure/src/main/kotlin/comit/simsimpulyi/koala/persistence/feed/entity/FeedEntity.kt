@@ -1,6 +1,6 @@
 package comit.simsimpulyi.koala.persistence.feed.entity
 
-import comit.simsimpulyi.koala.persistence.BaseEntity
+import comit.simsimpulyi.koala.persistence.BaseUUIDEntity
 import comit.simsimpulyi.koala.persistence.user.entity.UserEntity
 import org.hibernate.annotations.ColumnDefault
 import org.hibernate.validator.constraints.Length
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.PositiveOrZero
 
 @Entity
-@Table(name = "tb_feed")
+@Table(name = "tbl_feed")
 class FeedEntity(
     @field:NotNull
     @field:Length(max = 100)
@@ -27,7 +27,7 @@ class FeedEntity(
     @ManyToOne
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)")
     val writer: UserEntity
-) : BaseEntity() {
+) : BaseUUIDEntity() {
 
     @field:NotNull
     @field:PositiveOrZero

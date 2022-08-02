@@ -1,13 +1,13 @@
 package comit.simsimpulyi.koala.persistence.user.entity
 
 import comit.simsimpulyi.koala.domain.user.model.Authority
-import comit.simsimpulyi.koala.persistence.BaseEntity
+import comit.simsimpulyi.koala.persistence.BaseUUIDEntity
 import org.hibernate.validator.constraints.Length
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tbl_user")
 class UserEntity(
     @field:NotNull
     @field:Length(max = 10)
@@ -24,4 +24,4 @@ class UserEntity(
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
     var authority: Authority
-) : BaseEntity()
+) : BaseUUIDEntity()
