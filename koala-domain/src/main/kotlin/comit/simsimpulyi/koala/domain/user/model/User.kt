@@ -22,7 +22,7 @@ class User(
             name = name,
             password = this.password,
             email = email,
-            authority = authority
+            authority = this.authority
         )
     }
 }
