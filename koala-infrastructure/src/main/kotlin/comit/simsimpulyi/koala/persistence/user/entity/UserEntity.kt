@@ -11,17 +11,17 @@ import javax.validation.constraints.NotNull
 class UserEntity(
     @field:NotNull
     @field:Length(max = 10)
-    var name: String,
+    private var name: String,
 
     @field:NotNull
     @Column(columnDefinition = "CHAR(60)")
-    var password: String,
+    private var password: String,
 
     @field:NotNull
-    var email: String,
+    private var email: String,
 
     @field:NotNull
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
-    var authority: Authority
+    private var authority: Authority
 ) : BaseUUIDEntity()

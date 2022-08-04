@@ -9,5 +9,5 @@ import javax.persistence.Table
 @Table(name = "tbl_like")
 class LikeEntity(
     @EmbeddedId
-    val likeId: LikeEntityId
+    private val likeId: LikeEntityId
 ): BaseTimeEntity()

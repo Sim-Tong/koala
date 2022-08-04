@@ -13,26 +13,26 @@ import javax.validation.constraints.PositiveOrZero
 class FeedEntity(
     @field:NotNull
     @field:Length(max = 100)
-    var title: String,
+    private var title: String,
 
     @field:NotNull
     @Column(columnDefinition = "LONGTEXT")
-    var content: String,
+    private var content: String,
 
     @ColumnDefault("false")
     @Column(nullable = false)
-    var isPrivate: Boolean? = false,
+    private var isPrivate: Boolean? = false,
 
     @field:NotNull
     @ManyToOne
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)")
-    val writer: UserEntity
+    private val writer: UserEntity
 ) : BaseUUIDEntity() {
 
     @field:NotNull
     @field:PositiveOrZero
     @ColumnDefault("0")
     @Column(columnDefinition = "INT UNSIGNED")
-    var likeCount: Int = 0
+    private var likeCount: Int = 0
 
 }

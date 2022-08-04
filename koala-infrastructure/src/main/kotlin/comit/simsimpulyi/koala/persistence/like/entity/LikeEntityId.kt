@@ -11,10 +11,10 @@ data class LikeEntityId(
     @field:NotNull
     @ManyToOne
     @JoinColumn(columnDefinition = "BINARY(16)")
-    val user: UserEntity,
+    private val user: UserEntity,
 
     @field:NotNull
     @ManyToOne
     @JoinColumn(columnDefinition = "BINARY(16)")
-    val feed: FeedEntity
+    private val feed: FeedEntity
 ): Serializable
