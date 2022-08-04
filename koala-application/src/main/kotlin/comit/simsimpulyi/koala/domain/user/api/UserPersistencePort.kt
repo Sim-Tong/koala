@@ -1,4 +1,4 @@
-package comit.simsimpulyi.koala.domain.user.service
+package comit.simsimpulyi.koala.domain.user.api
 
 import comit.simsimpulyi.koala.domain.user.model.User
 import comit.simsimpulyi.koala.global.annotation.Port
