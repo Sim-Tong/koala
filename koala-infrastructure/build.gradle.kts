@@ -16,6 +16,9 @@ dependencies {
 
     implementation(Dependencies.JWT)
 
+    implementation(Dependencies.MAPSTRUCT_PROCESSER)
+    implementation(Dependencies.MAPSTRUCT)
+
     api(project(":koala-application"))
 }
 

@@ -14,4 +14,7 @@ object Dependencies {
 
     const val JWT = "io.jsonwebtoken:jjwt:${DependencyVersions.JWT_VERSION}"
     const val SPRING_TEST = "org.springframework.boot:spring-boot-starter-test:${PluginVersions.SPRING_BOOT_VERSION}"
+
+    const val MAPSTRUCT = "org.mapstruct:mapstruct:${DependencyVersions.MAPSTRUCT_VERSION}"
+    const val MAPSTRUCT_PROCESSER = "org.mapstruct:mapstruct-processor:${DependencyVersions.MAPSTRUCT_VERSION}"
 }
