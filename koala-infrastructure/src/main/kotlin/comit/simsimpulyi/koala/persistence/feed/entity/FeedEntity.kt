@@ -13,7 +13,7 @@ import javax.validation.constraints.PositiveOrZero
 class FeedEntity(
     title: String,
     content: String,
-    isPrivate: Boolean?,
+    isPrivate: Boolean = false,
 
     @field:NotNull
     @ManyToOne
@@ -40,6 +40,6 @@ class FeedEntity(
 
     @ColumnDefault("false")
     @Column(nullable = false)
-    var isPrivate = isPrivate ?: false
+    var isPrivate = isPrivate
         protected set
 }
