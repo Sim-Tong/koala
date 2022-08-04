@@ -9,19 +9,28 @@ import javax.validation.constraints.NotNull
 @Entity
 @Table(name = "tbl_user")
 class UserEntity(
+    name: String,
+    password: String,
+    email: String,
+    authority: Authority
+) : BaseUUIDEntity() {
     @field:NotNull
     @field:Length(max = 10)
-    var name: String,
+    var name = name
+        protected set
 
     @field:NotNull
     @Column(columnDefinition = "CHAR(60)")
-    var password: String,
+    var password = password
+        protected set
 
     @field:NotNull
-    var email: String,
+    var email = email
+        protected set
 
     @field:NotNull
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
-    var authority: Authority
-) : BaseUUIDEntity()
+    var authority = authority
+        protected set
+}

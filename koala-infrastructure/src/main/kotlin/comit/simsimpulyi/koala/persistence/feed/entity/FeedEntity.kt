@@ -11,17 +11,9 @@ import javax.validation.constraints.PositiveOrZero
 @Entity
 @Table(name = "tbl_feed")
 class FeedEntity(
-    @field:NotNull
-    @field:Length(max = 100)
-    var title: String,
-
-    @field:NotNull
-    @Column(columnDefinition = "LONGTEXT")
-    var content: String,
-
-    @ColumnDefault("false")
-    @Column(nullable = false)
-    var isPrivate: Boolean? = false,
+    title: String,
+    content: String,
+    isPrivate: Boolean = false,
 
     @field:NotNull
     @ManyToOne
@@ -34,5 +26,20 @@ class FeedEntity(
     @ColumnDefault("0")
     @Column(columnDefinition = "INT UNSIGNED")
     var likeCount: Int = 0
+        protected set
 
+    @field:NotNull
+    @field:Length(max = 100)
+    var title = title
+        protected set
+
+    @field:NotNull
+    @Column(columnDefinition = "LONGTEXT")
+    var content = content
+        protected set
+
+    @ColumnDefault("false")
+    @Column(nullable = false)
+    var isPrivate = isPrivate
+        protected set
 }
