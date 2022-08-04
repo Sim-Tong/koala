@@ -11,28 +11,35 @@ import javax.validation.constraints.PositiveOrZero
 @Entity
 @Table(name = "tbl_feed")
 class FeedEntity(
-    @field:NotNull
-    @field:Length(max = 100)
-    private var title: String,
-
-    @field:NotNull
-    @Column(columnDefinition = "LONGTEXT")
-    private var content: String,
-
-    @ColumnDefault("false")
-    @Column(nullable = false)
-    private var isPrivate: Boolean? = false,
+    title: String,
+    content: String,
+    isPrivate: Boolean?,
 
     @field:NotNull
     @ManyToOne
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)")
-    private val writer: UserEntity
+    val writer: UserEntity
 ) : BaseUUIDEntity() {
 
     @field:NotNull
     @field:PositiveOrZero
     @ColumnDefault("0")
     @Column(columnDefinition = "INT UNSIGNED")
-    private var likeCount: Int = 0
+    var likeCount: Int = 0
+        protected set
 
+    @field:NotNull
+    @field:Length(max = 100)
+    var title = title
+        protected set
+
+    @field:NotNull
+    @Column(columnDefinition = "LONGTEXT")
+    var content = content
+        protected set
+
+    @ColumnDefault("false")
+    @Column(nullable = false)
+    var isPrivate = isPrivate ?: false
+        protected set
 }
