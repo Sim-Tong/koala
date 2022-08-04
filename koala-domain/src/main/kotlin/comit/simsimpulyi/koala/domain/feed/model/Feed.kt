@@ -13,7 +13,7 @@ class Feed(
 
     val isPrivate: Boolean,
 
-    val writer: UUID,
+    val writerId: UUID,
 
     val likeCount: Int
 ) {
@@ -24,7 +24,7 @@ class Feed(
             title = title,
             content = content,
             isPrivate = this.isPrivate,
-            writer = this.writer,
+            writerId = this.writerId,
             likeCount = this.likeCount
         );
     }
