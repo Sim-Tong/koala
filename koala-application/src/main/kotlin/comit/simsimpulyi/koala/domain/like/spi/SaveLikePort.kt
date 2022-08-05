@@ -4,6 +4,6 @@ import comit.simsimpulyi.koala.domain.like.model.Like
 
 interface SaveLikePort {
 
-    fun saveLike(like: Like): Unit
+    fun saveLike(like: Like): Like
 
 }
