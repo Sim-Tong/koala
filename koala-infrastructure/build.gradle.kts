@@ -16,6 +16,9 @@ dependencies {
 
     implementation(Dependencies.JWT)
 
+    implementation(Dependencies.MAPSTRUCT_PROCESSER)
+    implementation(Dependencies.MAPSTRUCT)
+
     api(project(":koala-application"))
 }
 
@@ -29,10 +32,6 @@ noArg {
     annotation("javax.persistence.Entity")
     annotation("javax.persistence.MappedSuperclass")
     annotation("javax.persistence.Embeddable")
-}
-
-tasks.getByName<Jar>("jar") {
-    enabled = false
 }
 
 tasks.getByName<Jar>("bootJar") {
