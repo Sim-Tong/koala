@@ -7,7 +7,7 @@ class LikePersistenceAdapter(
     private val likeRepository: LikeRepository
 ) : SaveLikePort {
 
-    override fun saveLike(like: Like): Unit {
+    override fun saveLike(like: Like): Like {
         TODO("Not yet implemented")
     }
 }
