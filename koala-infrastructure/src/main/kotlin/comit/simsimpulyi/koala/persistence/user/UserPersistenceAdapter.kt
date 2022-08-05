@@ -1,14 +1,13 @@
 package comit.simsimpulyi.koala.persistence.user
 
 import comit.simsimpulyi.koala.domain.user.model.User
-import comit.simsimpulyi.koala.domain.user.spi.UserPersistencePort
-import comit.simsimpulyi.koala.global.annotation.Adapter
+import comit.simsimpulyi.koala.domain.user.spi.QueryUserPort
+import comit.simsimpulyi.koala.domain.user.spi.SaveUserPort
 import java.util.*
 
-@Adapter
 class UserPersistenceAdapter(
     private val repository: UserRepository
-) : UserPersistencePort {
+) : SaveUserPort, QueryUserPort {
 
     override fun saveUser(user: User): User {
         TODO("Not yet implemented")
