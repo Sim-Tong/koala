@@ -17,7 +17,6 @@ abstract class FeedMapper : BaseMapper<FeedEntity, Feed> {
     @Mapping(target = "writerId", expression = "java(entity.getWriter().getId())")
     abstract override fun toDomain(entity: FeedEntity): Feed
 
-    @Mapping(target = "writer", expression = "java(userPersistenceAdapter().getUser(model.getWriterId()))")
+    @Mapping(target = "writer", expression = "java(userPersistenceAdapter.getUser(model.getWriterId()))")
     abstract override fun toEntity(model: Feed): FeedEntity
 }
-
