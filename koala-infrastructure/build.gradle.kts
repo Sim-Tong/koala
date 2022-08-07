@@ -19,6 +19,8 @@ dependencies {
     implementation(Dependencies.MAPSTRUCT_PROCESSER)
     implementation(Dependencies.MAPSTRUCT)
 
+    implementation(Dependencies.AWS_S3)
+
     api(project(":koala-application"))
 }
 
