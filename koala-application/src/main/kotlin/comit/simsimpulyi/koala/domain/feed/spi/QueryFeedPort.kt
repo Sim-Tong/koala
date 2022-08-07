@@ -5,6 +5,6 @@ import java.util.*
 
 interface QueryFeedPort {
 
-    fun getFeed(feedId: UUID): Feed
+    fun queryFeed(feedId: UUID): Feed
 
 }

@@ -15,7 +15,7 @@ class FeedPersistenceAdapter(
         TODO("Not yet implemented")
     }
 
-    override fun getFeed(feedId: UUID): Feed {
+    override fun queryFeed(feedId: UUID): Feed {
         TODO("Not yet implemented")
     }
 

@@ -15,7 +15,7 @@ class UserPersistenceAdapter(
         TODO("Not yet implemented")
     }
 
-    override fun getUser(userId: UUID): User {
+    override fun queryUserById(userId: UUID): User {
         TODO("Not yet implemented")
     }
 
