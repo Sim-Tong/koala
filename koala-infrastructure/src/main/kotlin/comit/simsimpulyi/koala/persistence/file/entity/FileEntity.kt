@@ -6,7 +6,7 @@ import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(name = "tb_file")
+@Table(name = "tbl_file")
 class FileEntity(
     @Id
     val path: String,
