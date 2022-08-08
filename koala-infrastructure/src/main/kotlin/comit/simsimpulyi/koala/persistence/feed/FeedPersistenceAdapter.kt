@@ -16,16 +16,14 @@ class FeedPersistenceAdapter(
 ) : SaveFeedPort, QueryFeedPort {
 
     override fun saveFeed(feed: Feed): Feed {
-        var entity = feedMapper.toEntity(feed)
-
-        entity = feedRepository.save(entity)
+        val entity = feedRepository.save(feedMapper.toEntity(feed))
         filePersistenceAdapter.saveFile(feed.filePaths, entity)
 
         return feedMapper.toDomain(entity)
     }
 
     override fun queryFeed(feedId: UUID): Feed {
-        val entity = feedRepository.queryById(feedId).orElseThrow() // exception 추가
+        val entity = feedRepository.queryById(feedId)
         return feedMapper.toDomain(entity)
     }
 
