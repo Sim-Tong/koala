@@ -11,12 +11,8 @@ class FilePersistenceAdapter(
 ) {
 
     fun saveFile(filePaths: List<String>, feed: FeedEntity) {
-        for (path in filePaths) {
-            fileRepository.save(
-                FileEntity(
-                    path = path,
-                    feed = feed
-                ))
+        filePaths.forEach {
+            fileRepository.save(FileEntity(it, feed))
         }
     }
 
