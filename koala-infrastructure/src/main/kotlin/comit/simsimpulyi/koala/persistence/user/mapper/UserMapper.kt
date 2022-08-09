@@ -5,7 +5,7 @@ import comit.simsimpulyi.koala.persistence.BaseMapper
 import comit.simsimpulyi.koala.persistence.user.entity.UserEntity
 import org.mapstruct.Mapper
 
-@Mapper(componentModel = "spring")
+@Mapper
 interface UserMapper : BaseMapper<UserEntity, User> {
 
 }

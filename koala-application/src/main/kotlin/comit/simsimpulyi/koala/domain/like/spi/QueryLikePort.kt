@@ -5,9 +5,9 @@ import java.util.*
 
 interface QueryLikePort {
 
-    fun getLike(userId: UUID, feedId: UUID): Like
+    fun queryLike(userId: UUID, feedId: UUID): Like
 
-    fun getLikeAllByUser(userId: UUID): List<Like>
+    fun queryLikeAllByUser(userId: UUID): List<Like>
 
-    fun getLikeAllByFeed(feedId: UUID): List<Like>
+    fun queryLikeAllByFeed(feedId: UUID): List<Like>
 }

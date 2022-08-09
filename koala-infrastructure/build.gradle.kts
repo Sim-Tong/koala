@@ -16,10 +16,20 @@ dependencies {
 
     implementation(Dependencies.JWT)
 
-    implementation(Dependencies.MAPSTRUCT_PROCESSER)
     implementation(Dependencies.MAPSTRUCT)
+    kapt(Dependencies.MAPSTRUCT_PROCESSER)
+
+    implementation(Dependencies.SPRING_AWS)
+    annotationProcessor(Dependencies.CONFIGURATION_PROCESSOR)
 
     api(project(":koala-application"))
+}
+
+kapt {
+    arguments {
+        arg("mapstruct.defaultComponentModel", "spring")
+        arg("mapstruct.unmappedTargetPolicy", "IGNORE")
+    }
 }
 
 allOpen {

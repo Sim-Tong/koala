@@ -6,6 +6,7 @@ object Dependencies {
     const val SPRING_WEB = "org.springframework.boot:spring-boot-starter-web"
     const val SPRING_VALIDATION = "org.springframework.boot:spring-boot-starter-validation"
     const val SPRING_SECURITY = "org.springframework.boot:spring-boot-starter-security"
+    const val CONFIGURATION_PROCESSOR = "org.springframework.boot:spring-boot-configuration-processor"
 
     const val JACKSON = "com.fasterxml.jackson.module:jackson-module-kotlin"
 
@@ -17,4 +18,6 @@ object Dependencies {
 
     const val MAPSTRUCT = "org.mapstruct:mapstruct:${DependencyVersions.MAPSTRUCT_VERSION}"
     const val MAPSTRUCT_PROCESSER = "org.mapstruct:mapstruct-processor:${DependencyVersions.MAPSTRUCT_VERSION}"
+
+    const val SPRING_AWS = "org.springframework.cloud:spring-cloud-starter-aws:${DependencyVersions.AWS_VERSION}"
 }

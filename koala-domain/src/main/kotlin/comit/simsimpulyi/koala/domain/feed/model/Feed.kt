@@ -15,7 +15,9 @@ class Feed(
 
     val writerId: UUID,
 
-    val likeCount: Int
+    val likeCount: Int,
+
+    val filePaths: List<String>
 ) {
 
     fun updateTitleAndContent(title: String, content: String): Feed {
@@ -25,7 +27,8 @@ class Feed(
             content = content,
             isPrivate = this.isPrivate,
             writerId = this.writerId,
-            likeCount = this.likeCount
-        );
+            likeCount = this.likeCount,
+            filePaths = this.filePaths
+        )
     }
 }

@@ -15,15 +15,15 @@ class LikePersistenceAdapter(
         TODO("Not yet implemented")
     }
 
-    override fun getLike(userId: UUID, feedId: UUID): Like {
+    override fun queryLike(userId: UUID, feedId: UUID): Like {
         TODO("Not yet implemented")
     }
 
-    override fun getLikeAllByUser(userId: UUID): List<Like> {
+    override fun queryLikeAllByUser(userId: UUID): List<Like> {
         TODO("Not yet implemented")
     }
 
-    override fun getLikeAllByFeed(feedId: UUID): List<Like> {
+    override fun queryLikeAllByFeed(feedId: UUID): List<Like> {
         TODO("Not yet implemented")
     }
 

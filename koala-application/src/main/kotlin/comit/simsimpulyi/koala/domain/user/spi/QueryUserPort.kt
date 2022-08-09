@@ -5,6 +5,6 @@ import java.util.*
 
 interface QueryUserPort {
 
-    fun getUser(userId: UUID): User
+    fun queryUserById(userId: UUID): User
 
 }
