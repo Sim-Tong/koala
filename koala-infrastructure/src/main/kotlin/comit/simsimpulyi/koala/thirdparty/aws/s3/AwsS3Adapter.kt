@@ -15,7 +15,7 @@ class AwsS3Adapter(
 ) : UploadFilePort {
 
     override fun uploadFile(file: File): String {
-        val fileKey = "${UUID.randomUUID()}${file.name}"
+        val fileKey = "${UUID.randomUUID()}@${file.name}"
 
         amazonS3Client.putObject(
             PutObjectRequest(awsS3Properties.bucket, fileKey, file)
