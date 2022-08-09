@@ -8,5 +8,5 @@ import java.util.*
 @Repository
 interface FeedRepository : CrudRepository<FeedEntity, UUID> {
 
-    fun queryById(id: UUID): FeedEntity
+    fun queryById(id: UUID): FeedEntity?
 }

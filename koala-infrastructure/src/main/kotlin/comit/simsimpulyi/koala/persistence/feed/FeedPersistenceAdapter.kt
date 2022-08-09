@@ -23,7 +23,7 @@ class FeedPersistenceAdapter(
     }
 
     override fun queryFeed(feedId: UUID): Feed {
-        val entity = feedRepository.queryById(feedId)
+        val entity = feedRepository.queryById(feedId)?:throw Exception() // 추후 변경
         return feedMapper.toDomain(entity)
     }
 
