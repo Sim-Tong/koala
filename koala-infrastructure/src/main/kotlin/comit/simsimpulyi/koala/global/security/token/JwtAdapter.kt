@@ -51,10 +51,13 @@ class JwtAdapter(
     }
 
     fun getAuthentication(token: String) : Authentication {
-        val claims = getClaims(token).body
-        claims[Header.JWT_TYPE] ?: throw Exception() // TODO
+        val claims = getClaims(token)
 
-        val detail = authDetailsService.loadUserByUsername(claims.subject)
+        val type = claims.header[Header.JWT_TYPE]
+        if(type != "access") throw Exception() // TODO
+
+        val detail = authDetailsService.loadUserByUsername(claims.body.subject)
+
         return UsernamePasswordAuthenticationToken(detail, "", detail.authorities)
     }
 }
