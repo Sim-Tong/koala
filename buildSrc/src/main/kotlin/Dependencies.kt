@@ -12,6 +12,7 @@ object Dependencies {
 
     const val SPRING_DATA_JPA = "org.springframework.boot:spring-boot-starter-data-jpa"
     const val MYSQL_CONNECTOR = "mysql:mysql-connector-java"
+    const val SPRING_REDIS = "org.springframework.boot:spring-boot-starter-data-redis"
 
     const val JWT = "io.jsonwebtoken:jjwt:${DependencyVersions.JWT_VERSION}"
     const val SPRING_TEST = "org.springframework.boot:spring-boot-starter-test:${PluginVersions.SPRING_BOOT_VERSION}"
@@ -20,4 +21,6 @@ object Dependencies {
     const val MAPSTRUCT_PROCESSER = "org.mapstruct:mapstruct-processor:${DependencyVersions.MAPSTRUCT_VERSION}"
 
     const val SPRING_AWS = "org.springframework.cloud:spring-cloud-starter-aws:${DependencyVersions.AWS_VERSION}"
+
+    const val REDIS = "org.springframework.data:spring-data-redis:${DependencyVersions.REDIS_VERSION}"
 }
