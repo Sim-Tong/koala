@@ -18,6 +18,11 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
 
+  security:
+    expireTime: ${ACCESS_EXPIRE}
+    refreshTime: ${REFRESH_EXPIRE}
+    secret: ${JWT_SECRET}
+
 cloud:
   aws:
     credentials:
