@@ -1,6 +1,7 @@
 package comit.simsimpulyi.koala.global.security
 
 import comit.simsimpulyi.koala.global.filter.FilterConfig
+import comit.simsimpulyi.koala.global.security.token.JwtAdapter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -13,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val filterConfig: FilterConfig
+    private val jwtAdapter: JwtAdapter
 ) {
 
     @Bean
@@ -32,7 +33,9 @@ class SecurityConfig(
             .anyRequest().authenticated()
             .and()
 
-            .addFilterAfter(filterConfig(), )
+            .apply(FilterConfig(jwtAdapter))
+            .and()
+
             .build()
     }
 
