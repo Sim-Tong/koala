@@ -7,11 +7,11 @@ import java.util.*
 @ConfigurationPropertiesScan("spring.security")
 @ConstructorBinding
 class SecurityProperties(
-    secret: String,
+    secretKey: String,
     accessTime: Int,
     refreshTime: Int
 ) {
     val accessExpire = accessTime * 1000
     val refreshExpire = refreshTime * 1000
-    val secret = Base64.getEncoder().encodeToString(secret.padStart(64).toByteArray())!!
+    val secretKey = Base64.getEncoder().encodeToString(secretKey.padStart(64).toByteArray())!!
 }

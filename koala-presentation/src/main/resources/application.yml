@@ -21,7 +21,7 @@ spring:
   security:
     expireTime: ${ACCESS_EXPIRE}
     refreshTime: ${REFRESH_EXPIRE}
-    secret: ${JWT_SECRET}
+    secretKey: ${JWT_SECRET}
 
 cloud:
   aws:
@@ -36,3 +36,7 @@ cloud:
 aws:
   s3:
     bucket: ${AWS_BUCKET}
+
+logging:
+  level:
+    com.amazonaws.util.EC2MetadataUtils: error
