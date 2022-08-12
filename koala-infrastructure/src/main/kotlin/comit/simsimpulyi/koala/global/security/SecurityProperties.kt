@@ -1,10 +1,10 @@
 package comit.simsimpulyi.koala.global.security
 
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan
+import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 import java.util.*
 
-@ConfigurationPropertiesScan("spring.security")
+@ConfigurationProperties("spring.security")
 @ConstructorBinding
 class SecurityProperties(
     secretKey: String,
@@ -13,5 +13,5 @@ class SecurityProperties(
 ) {
     val accessExpire = accessTime * 1000
     val refreshExpire = refreshTime * 1000
-    val secretKey = Base64.getEncoder().encodeToString(secretKey.padStart(64).toByteArray())!!
+    val secretKey = Base64.getEncoder().encodeToString(secretKey.toByteArray())!!
 }
