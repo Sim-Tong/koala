@@ -19,7 +19,7 @@ spring:
     open-in-view: false
 
   security:
-    expireTime: ${ACCESS_EXPIRE}
+    accessTime: ${ACCESS_EXPIRE}
     refreshTime: ${REFRESH_EXPIRE}
     secretKey: ${JWT_SECRET}
 
