@@ -10,26 +10,27 @@ import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class JwtGenerator(
+class JwtGeneratorAdapter(
     private val securityProperties: SecurityProperties
 ) : ReceiveTokenPort {
 
     override fun generateAccessToken(email: String, authority: Authority): String {
-        return generateToken(email, authority, securityProperties.accessExpire, JwtComponent.ACCESS)
-    }
-
-    override fun generateRefreshToken(email: String, authority: Authority): String {
-        return generateToken(email, authority, securityProperties.refreshExpire, JwtComponent.REFRESH)
-    }
-
-    private fun generateToken(email: String, authority: Authority, exp: Int, type: String): String {
         return Jwts.builder()
             .signWith(SignatureAlgorithm.HS512, securityProperties.secretKey)
-            .setHeaderParam(Header.JWT_TYPE, type)
+            .setHeaderParam(Header.JWT_TYPE, JwtComponent.ACCESS)
             .setSubject(email)
             .claim(JwtComponent.JWT_AUTHORITY, authority)
             .setIssuedAt(Date())
-            .setExpiration(Date(System.currentTimeMillis() + exp))
+            .setExpiration(Date(System.currentTimeMillis() + securityProperties.accessExpire))
+            .compact()
+    }
+
+    override fun generateRefreshToken(email: String, authority: Authority): String {
+        return Jwts.builder()
+            .signWith(SignatureAlgorithm.HS512, securityProperties.secretKey)
+            .setHeaderParam(Header.JWT_TYPE, JwtComponent.REFRESH)
+            .setIssuedAt(Date())
+            .setExpiration(Date(System.currentTimeMillis() + securityProperties.refreshExpire))
             .compact()
     }
 }
