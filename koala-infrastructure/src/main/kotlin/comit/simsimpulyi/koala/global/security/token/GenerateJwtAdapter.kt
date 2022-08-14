@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class JwtGeneratorAdapter(
+class GenerateJwtAdapter(
     private val securityProperties: SecurityProperties
 ) : ReceiveTokenPort {
 
