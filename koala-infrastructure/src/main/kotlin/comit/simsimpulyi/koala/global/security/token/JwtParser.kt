@@ -2,15 +2,7 @@ package comit.simsimpulyi.koala.global.security.token
 
 import comit.simsimpulyi.koala.global.security.SecurityProperties
 import comit.simsimpulyi.koala.global.security.principle.AuthDetailsService
-import io.jsonwebtoken.Claims
-import io.jsonwebtoken.ExpiredJwtException
-import io.jsonwebtoken.Header
-import io.jsonwebtoken.InvalidClaimException
-import io.jsonwebtoken.Jws
-import io.jsonwebtoken.JwtException
-import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureException
-import io.jsonwebtoken.UnsupportedJwtException
+import io.jsonwebtoken.*
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Component
@@ -30,7 +22,7 @@ class JwtParser(
         return null
     }
 
-    private fun getClaims(token: String): Jws<Claims> {
+    private fun getClaims(token: String): Jws<Claims>? {
         try {
             return Jwts.parser()
                 .setSigningKey(securityProperties.secretKey)
@@ -46,15 +38,20 @@ class JwtParser(
         } catch (e: RuntimeException) {
             // TODO
         }
+        return null
     }
 
-    fun getAuthentication(token: String) : Authentication {
+    fun getAuthentication(token: String) : Authentication? {
         val claims = getClaims(token)
+        
+        claims?.let {
+            if(claims.header[Header.JWT_TYPE] != JwtComponent.ACCESS) throw Exception() // TODO
 
-        if(claims.header[Header.JWT_TYPE] != JwtComponent.ACCESS) throw Exception() // TODO
+            val detail = authDetailsService.loadUserByUsername(claims.body.subject)
 
-        val detail = authDetailsService.loadUserByUsername(claims.body.subject)
+            return UsernamePasswordAuthenticationToken(detail, "", detail.authorities)
+        }
 
-        return UsernamePasswordAuthenticationToken(detail, "", detail.authorities)
+        return null
     }
 }
