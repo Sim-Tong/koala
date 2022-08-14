@@ -12,14 +12,14 @@ import org.springframework.stereotype.Component
 import javax.servlet.http.HttpServletRequest
 
 @Component
-class FilterTokenAdapter(
+class JwtInterpreter(
     private val securityProperties: SecurityProperties,
     private val authDetailsService: AuthDetailsService
 ) {
 
     fun resolveToken(request: HttpServletRequest): String? {
-        val bearer = request.getHeader("Authentication")
-        if(bearer.isNotEmpty().and(bearer.startsWith("bearer "))) {
+        val bearer = request.getHeader(JwtComponent.JWT_HEADER)
+        if(bearer.isNotEmpty().and(bearer.startsWith(JwtComponent.JWT_PREFIX))) {
             return bearer.substring(7)
         }
         return null
@@ -34,7 +34,7 @@ class FilterTokenAdapter(
     fun getAuthentication(token: String) : Authentication {
         val claims = getClaims(token)
 
-        if(claims.header[Header.JWT_TYPE] != "access") throw Exception() // TODO
+        if(claims.header[Header.JWT_TYPE] != JwtComponent.ACCESS) throw Exception() // TODO
 
         val detail = authDetailsService.loadUserByUsername(claims.body.subject)
 

@@ -1,6 +1,6 @@
 package comit.simsimpulyi.koala.global.filter
 
-import comit.simsimpulyi.koala.global.security.token.FilterTokenAdapter
+import comit.simsimpulyi.koala.global.security.token.JwtInterpreter
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.filter.OncePerRequestFilter
 import javax.servlet.FilterChain
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 class JwtFilter(
-    private val filterTokenAdapter: FilterTokenAdapter
+    private val jwtInterpreter: JwtInterpreter
 ) : OncePerRequestFilter() {
 
     override fun doFilterInternal(
@@ -16,9 +16,9 @@ class JwtFilter(
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        val token = filterTokenAdapter.resolveToken(request)
+        val token = jwtInterpreter.resolveToken(request)
         token?.let {
-            val authentication = filterTokenAdapter.getAuthentication(it)
+            val authentication = jwtInterpreter.getAuthentication(it)
             SecurityContextHolder.getContext().authentication = authentication
         }
         filterChain.doFilter(request, response)

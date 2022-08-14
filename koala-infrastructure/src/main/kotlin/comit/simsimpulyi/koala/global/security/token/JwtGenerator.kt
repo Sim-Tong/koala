@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class JwtAdapter(
+class JwtGenerator(
     private val securityProperties: SecurityProperties
 ) : ReceiveTokenPort {
 
     override fun generateAccessToken(email: String, authority: Authority): String {
-        return generateToken(email, authority, securityProperties.accessExpire, "access")
+        return generateToken(email, authority, securityProperties.accessExpire, JwtComponent.ACCESS)
     }
 
     override fun generateRefreshToken(email: String, authority: Authority): String {
-        return generateToken(email, authority, securityProperties.refreshExpire, "refresh")
+        return generateToken(email, authority, securityProperties.refreshExpire, JwtComponent.REFRESH)
     }
 
     private fun generateToken(email: String, authority: Authority, exp: Int, type: String): String {
@@ -27,7 +27,7 @@ class JwtAdapter(
             .signWith(SignatureAlgorithm.HS512, securityProperties.secretKey)
             .setHeaderParam(Header.JWT_TYPE, type)
             .setSubject(email)
-            .claim("authority", authority)
+            .claim(JwtComponent.JWT_AUTHORITY, authority)
             .setIssuedAt(Date())
             .setExpiration(Date(System.currentTimeMillis() + exp))
             .compact()
