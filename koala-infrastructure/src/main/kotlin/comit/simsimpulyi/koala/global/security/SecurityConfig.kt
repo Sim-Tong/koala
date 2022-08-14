@@ -1,7 +1,7 @@
 package comit.simsimpulyi.koala.global.security
 
 import comit.simsimpulyi.koala.global.filter.FilterConfig
-import comit.simsimpulyi.koala.global.security.token.JwtInterpreter
+import comit.simsimpulyi.koala.global.security.token.JwtParser
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain
 
 @Configuration
 class SecurityConfig(
-    private val jwtInterpreter: JwtInterpreter
+    private val jwtParser: JwtParser
 ) {
 
     @Bean
@@ -21,6 +21,8 @@ class SecurityConfig(
             .cors().and()
             .csrf().disable()
             .formLogin().disable()
+
+        http
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
@@ -30,7 +32,7 @@ class SecurityConfig(
             .anyRequest().authenticated()
 
         http
-            .apply(FilterConfig(jwtInterpreter))
+            .apply(FilterConfig(jwtParser))
 
         return http.build()
     }
