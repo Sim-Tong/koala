@@ -22,6 +22,9 @@ dependencies {
     implementation(Dependencies.SPRING_AWS)
     annotationProcessor(Dependencies.CONFIGURATION_PROCESSOR)
 
+    implementation(Dependencies.REDIS)
+    implementation(Dependencies.SPRING_REDIS)
+
     api(project(":koala-application"))
 }
 

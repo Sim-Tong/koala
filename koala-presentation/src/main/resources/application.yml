@@ -18,6 +18,11 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
 
+  security:
+    accessTime: ${ACCESS_EXPIRE}
+    refreshTime: ${REFRESH_EXPIRE}
+    secretKey: ${JWT_SECRET}
+
 cloud:
   aws:
     credentials:
@@ -31,3 +36,7 @@ cloud:
 aws:
   s3:
     bucket: ${AWS_BUCKET}
+
+logging:
+  level:
+    com.amazonaws.util.EC2MetadataUtils: error
