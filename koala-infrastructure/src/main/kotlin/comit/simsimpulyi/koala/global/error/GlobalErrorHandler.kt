@@ -2,6 +2,7 @@ package comit.simsimpulyi.koala.global.error
 
 import org.springframework.http.HttpStatus
 import org.springframework.validation.BindException
+import org.springframework.web.HttpRequestMethodNotSupportedException
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -66,5 +67,16 @@ class GlobalErrorHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     protected fun handleIllegalArgumentException(ex: IllegalArgumentException): ErrorResponse? {
         return ErrorResponse.of(GlobalErrorCode.BAD_REQUEST)
+    }
+
+    /**
+     * 지원하지 않은 HTTP method 호출할 경우 발생
+     */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException::class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    protected fun handleHttpRequestMethodNotSupportedException(
+        ex: HttpRequestMethodNotSupportedException
+    ): ErrorResponse? {
+        return ErrorResponse.of(GlobalErrorCode.METHOD_NOT_ALLOWED)
     }
 }
