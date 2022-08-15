@@ -1,5 +1,6 @@
 package comit.simsimpulyi.koala.global.error
 
+import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.validation.BindingResult
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
 import javax.validation.ConstraintViolation
@@ -37,6 +38,15 @@ class ErrorResponse(
 
         fun of(exception: MethodArgumentTypeMismatchException): ErrorResponse {
             val reason = exception.name + ":" + exception.errorCode + ":" + exception.value
+
+            return this.of(
+                exception = GlobalErrorCode.BAD_REQUEST,
+                reason = reason
+            )
+        }
+
+        fun of(exception: DataIntegrityViolationException): ErrorResponse {
+            val reason = exception.cause.toString()
 
             return this.of(
                 exception = GlobalErrorCode.BAD_REQUEST,

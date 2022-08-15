@@ -1,5 +1,6 @@
 package comit.simsimpulyi.koala.global.error
 
+import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.http.HttpStatus
 import org.springframework.validation.BindException
 import org.springframework.web.HttpRequestMethodNotSupportedException
@@ -19,8 +20,8 @@ class GlobalErrorHandler {
      */
     @ExceptionHandler(BindException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    protected fun handleBindException(ex: BindException): ErrorResponse? {
-        return ErrorResponse.of(ex.bindingResult)
+    protected fun handleBindException(exception: BindException): ErrorResponse? {
+        return ErrorResponse.of(exception.bindingResult)
     }
 
     /**
@@ -31,9 +32,9 @@ class GlobalErrorHandler {
     @ExceptionHandler(MethodArgumentNotValidException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     protected fun handleMethodArgumentNotValidException(
-        ex: MethodArgumentNotValidException
+        exception: MethodArgumentNotValidException
     ): ErrorResponse? {
-        return ErrorResponse.of(ex.bindingResult)
+        return ErrorResponse.of(exception.bindingResult)
     }
 
     /**
@@ -55,9 +56,20 @@ class GlobalErrorHandler {
     @ExceptionHandler(ConstraintViolationException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     protected fun handleConstraintViolationException(
-        ex: ConstraintViolationException
+        exception: ConstraintViolationException
     ): ErrorResponse? {
-        return ErrorResponse.of(ex.constraintViolations)
+        return ErrorResponse.of(exception.constraintViolations)
+    }
+
+    /**
+     * SQL 문을 통한 데이터의 삽입/수정이 무결성 제약 조건을 위반할 경우 발생
+     */
+    @ExceptionHandler(DataIntegrityViolationException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    protected fun handleConstraintViolationException(
+        exception: DataIntegrityViolationException
+    ): ErrorResponse? {
+        return ErrorResponse.of(exception)
     }
 
     /**
@@ -65,7 +77,7 @@ class GlobalErrorHandler {
      */
     @ExceptionHandler(IllegalArgumentException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    protected fun handleIllegalArgumentException(ex: IllegalArgumentException): ErrorResponse? {
+    protected fun handleIllegalArgumentException(exception: IllegalArgumentException): ErrorResponse? {
         return ErrorResponse.of(GlobalErrorCode.BAD_REQUEST)
     }
 
@@ -75,7 +87,7 @@ class GlobalErrorHandler {
     @ExceptionHandler(HttpRequestMethodNotSupportedException::class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     protected fun handleHttpRequestMethodNotSupportedException(
-        ex: HttpRequestMethodNotSupportedException
+        exception: HttpRequestMethodNotSupportedException
     ): ErrorResponse? {
         return ErrorResponse.of(GlobalErrorCode.METHOD_NOT_ALLOWED)
     }
