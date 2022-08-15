@@ -6,21 +6,12 @@ import io.jsonwebtoken.*
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Component
-import javax.servlet.http.HttpServletRequest
 
 @Component
 class JwtParser(
     private val securityProperties: SecurityProperties,
     private val authDetailsService: AuthDetailsService
 ) {
-
-    fun resolveToken(request: HttpServletRequest): String? {
-        val bearer = request.getHeader(JwtComponent.JWT_HEADER)
-        if(bearer.isNotEmpty().and(bearer.startsWith(JwtComponent.JWT_PREFIX))) {
-            return bearer.substring(7)
-        }
-        return null
-    }
 
     private fun getClaims(token: String): Jws<Claims>? {
         try {
