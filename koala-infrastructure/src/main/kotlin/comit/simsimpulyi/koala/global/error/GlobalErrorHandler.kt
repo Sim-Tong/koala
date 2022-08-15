@@ -66,7 +66,7 @@ class GlobalErrorHandler {
      */
     @ExceptionHandler(DataIntegrityViolationException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    protected fun handleConstraintViolationException(
+    protected fun handleDataIntegrityViolationException(
         exception: DataIntegrityViolationException
     ): ErrorResponse? {
         return ErrorResponse.of(exception)
