@@ -1,5 +1,6 @@
 package comit.simsimpulyi.koala.global.security
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import comit.simsimpulyi.koala.global.filter.FilterConfig
 import comit.simsimpulyi.koala.global.security.token.JwtParser
 import org.springframework.context.annotation.Bean
@@ -12,7 +13,8 @@ import org.springframework.security.web.SecurityFilterChain
 
 @Configuration
 class SecurityConfig(
-    private val jwtParser: JwtParser
+    private val jwtParser: JwtParser,
+    private val objectMapper: ObjectMapper
 ) {
 
     @Bean
@@ -32,13 +34,11 @@ class SecurityConfig(
             .anyRequest().authenticated()
 
         http
-            .apply(FilterConfig(jwtParser))
+            .apply(FilterConfig(jwtParser, objectMapper))
 
         return http.build()
     }
 
     @Bean
-    protected fun PasswordEncoder() : PasswordEncoder {
-        return BCryptPasswordEncoder();
-    }
+    protected fun PasswordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 }
