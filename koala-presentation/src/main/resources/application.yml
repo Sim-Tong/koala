@@ -23,6 +23,9 @@ spring:
     refreshTime: ${REFRESH_EXPIRE}
     secretKey: ${JWT_SECRET}
 
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
 cloud:
   aws:
     credentials:
