@@ -42,4 +42,7 @@ aws:
 
 logging:
   level:
-    com.amazonaws.util.EC2MetadataUtils: ${EC2_LOGGING_LEVEL:error}
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: ${EC2_LOGGING_LEVEL:error}
