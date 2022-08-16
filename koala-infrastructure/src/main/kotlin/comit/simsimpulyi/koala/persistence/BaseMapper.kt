@@ -5,4 +5,5 @@ interface BaseMapper<ENTITY, DOMAIN> {
     fun toEntity(model: DOMAIN): ENTITY
 
     fun toDomain(entity: ENTITY): DOMAIN
+
 }

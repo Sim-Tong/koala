@@ -18,4 +18,4 @@ class FileEntity(
     @ManyToOne
     @JoinColumn(columnDefinition = "BINARY(16)")
     val feed: FeedEntity
-): BaseUUIDEntity()
+) : BaseUUIDEntity()

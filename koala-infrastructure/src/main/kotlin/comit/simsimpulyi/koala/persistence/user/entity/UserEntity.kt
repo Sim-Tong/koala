@@ -3,7 +3,11 @@ package comit.simsimpulyi.koala.persistence.user.entity
 import comit.simsimpulyi.koala.domain.user.model.Authority
 import comit.simsimpulyi.koala.persistence.BaseUUIDEntity
 import org.hibernate.validator.constraints.Length
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
+import javax.persistence.Table
 import javax.validation.constraints.NotNull
 
 @Entity

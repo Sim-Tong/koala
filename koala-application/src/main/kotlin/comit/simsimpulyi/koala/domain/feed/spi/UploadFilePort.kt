@@ -5,4 +5,5 @@ import java.io.File
 interface UploadFilePort {
 
     fun uploadFile(file: File): String
+
 }

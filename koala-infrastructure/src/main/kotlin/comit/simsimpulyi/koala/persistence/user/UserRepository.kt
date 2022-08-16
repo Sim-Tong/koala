@@ -9,4 +9,5 @@ import java.util.*
 interface UserRepository : CrudRepository<UserEntity, UUID> {
 
     fun queryUserEntityById(id: UUID): UserEntity?
+
 }

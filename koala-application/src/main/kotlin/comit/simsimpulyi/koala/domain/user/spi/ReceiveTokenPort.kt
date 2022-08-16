@@ -7,4 +7,5 @@ interface ReceiveTokenPort {
     fun generateAccessToken(email: String, authority: Authority): String
 
     fun generateRefreshToken(email: String, authority: Authority): String
+
 }

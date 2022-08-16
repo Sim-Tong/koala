@@ -26,5 +26,4 @@ class LikePersistenceAdapter(
     override fun queryLikeAllByFeed(feedId: UUID): List<Like> {
         TODO("Not yet implemented")
     }
-
 }

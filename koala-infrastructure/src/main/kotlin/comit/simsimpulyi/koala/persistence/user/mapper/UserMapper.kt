@@ -6,6 +6,4 @@ import comit.simsimpulyi.koala.persistence.user.entity.UserEntity
 import org.mapstruct.Mapper
 
 @Mapper
-interface UserMapper : BaseMapper<UserEntity, User> {
-
-}
+interface UserMapper : BaseMapper<UserEntity, User>

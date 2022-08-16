@@ -14,7 +14,7 @@ class FilePersistenceAdapter(
         fileRepository.saveAll(filePaths.map { FileEntity(it, feed) })
     }
 
-    fun queryFileList(feedId: UUID) : List<String> {
+    fun queryFileList(feedId: UUID): List<String> {
         return fileRepository.queryPathByFeedId(feedId)
     }
 }

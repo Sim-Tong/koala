@@ -24,7 +24,6 @@ class UserPersistenceAdapter(
     }
 
     fun queryUserEntityById(userId: UUID): UserEntity {
-        return userRepository.queryUserEntityById(userId)?:throw Exception() // TODO
+        return userRepository.queryUserEntityById(userId) ?: throw Exception() // TODO
     }
-
 }

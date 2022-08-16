@@ -10,4 +10,5 @@ interface QueryLikePort {
     fun queryLikeAllByUser(userId: UUID): List<Like>
 
     fun queryLikeAllByFeed(feedId: UUID): List<Like>
+
 }

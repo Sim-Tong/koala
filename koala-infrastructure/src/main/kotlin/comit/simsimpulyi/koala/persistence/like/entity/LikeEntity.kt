@@ -10,4 +10,4 @@ import javax.persistence.Table
 class LikeEntity(
     @EmbeddedId
     val likeId: LikeEntityId
-): BaseTimeEntity()
+) : BaseTimeEntity()
