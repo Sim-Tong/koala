@@ -17,18 +17,23 @@ class JwtFilter(
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        val token = resolveToken(request)
-        token?.let {
-            val authentication = jwtParser.getAuthentication(it)
-            SecurityContextHolder.getContext().authentication = authentication
+        val resolvedToken = resolveToken(request)
+        resolvedToken?.let { token ->
+            val authentication = jwtParser.getAuthentication(token)
+
+            authentication?.let { auth ->
+                SecurityContextHolder.getContext().authentication = auth
+            }
         }
+
         filterChain.doFilter(request, response)
     }
 
-    fun resolveToken(request: HttpServletRequest): String? {
-        val bearer = request.getHeader(JwtComponent.JWT_HEADER)
-        if(bearer.isNotEmpty().and(bearer.startsWith(JwtComponent.JWT_PREFIX))) {
-            return bearer.substring(7)
+    private fun resolveToken(request: HttpServletRequest): String? {
+        val bearerToken = request.getHeader(JwtComponent.JWT_HEADER)
+
+        if (bearerToken.isNotEmpty().and(bearerToken.startsWith(JwtComponent.JWT_PREFIX))) {
+            return bearerToken.substring(7)
         }
         return null
     }
