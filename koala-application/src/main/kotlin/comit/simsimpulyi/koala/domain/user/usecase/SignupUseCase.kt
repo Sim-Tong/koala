@@ -1,14 +1,16 @@
 package comit.simsimpulyi.koala.domain.user.usecase
 
 import comit.simsimpulyi.koala.domain.user.model.User
+import comit.simsimpulyi.koala.domain.user.spi.PasswordEncodePort
 import comit.simsimpulyi.koala.domain.user.spi.QueryUserPort
 import comit.simsimpulyi.koala.domain.user.spi.SaveUserPort
-import org.springframework.stereotype.Service
+import comit.simsimpulyi.koala.global.annotation.ApplicationService
 
-@Service
+@ApplicationService
 class SignupUseCase(
     private val queryUserPort: QueryUserPort,
     private val saveUserPort: SaveUserPort,
+    private val passwordEncodePort: PasswordEncodePort
 ) {
 
     fun execute(user: User) {
@@ -16,6 +18,8 @@ class SignupUseCase(
             throw Exception() // TODO
         }
 
-        saveUserPort.saveUserEncryption(user);
+        user.updatePassword(passwordEncodePort.passwordEncryption(user.password))
+
+        saveUserPort.saveUser(user)
     }
 }

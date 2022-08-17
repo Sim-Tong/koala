@@ -6,6 +6,4 @@ interface SaveUserPort {
 
     fun saveUser(user: User): User
 
-    fun saveUserEncryption(user: User): User
-
 }
