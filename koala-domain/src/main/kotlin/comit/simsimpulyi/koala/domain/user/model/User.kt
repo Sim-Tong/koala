@@ -25,4 +25,14 @@ class User(
             authority = this.authority
         )
     }
+
+    fun updatePassword(password: String): User {
+        return User(
+            id = this.id,
+            name = this.name,
+            password = password,
+            email = this.email,
+            authority = this.authority
+        )
+    }
 }

@@ -16,6 +16,6 @@ class SignupUseCase(
             throw Exception() // TODO
         }
 
-        saveUserPort.saveUser(user);
+        saveUserPort.saveUserEncryption(user);
     }
 }
