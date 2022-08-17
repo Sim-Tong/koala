@@ -5,7 +5,7 @@ import java.util.*
 
 @Aggregate
 class User(
-    val id: UUID,
+    val id: UUID?,
 
     val name: String,
 
@@ -26,13 +26,4 @@ class User(
         )
     }
 
-    fun updatePassword(password: String): User {
-        return User(
-            id = this.id,
-            name = this.name,
-            password = password,
-            email = this.email,
-            authority = this.authority
-        )
-    }
 }
