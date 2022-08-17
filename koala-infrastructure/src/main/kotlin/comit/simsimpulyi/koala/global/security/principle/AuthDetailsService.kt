@@ -14,8 +14,7 @@ class AuthDetailsService(
     override fun loadUserByUsername(userId: String): UserDetails {
         val id = UUID.fromString(userId)
 
-        val user = userRepository.queryUserEntityById(id)?:throw Exception() // TODO
+        val user = userRepository.queryUserEntityById(id) ?: throw Exception() // TODO
         return AuthDetails(id, user.authority)
     }
-
 }

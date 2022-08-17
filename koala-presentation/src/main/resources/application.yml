@@ -10,11 +10,11 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${DDL:validate}
     properties:
       hibernate:
-        format_sql: true
-        show_sql: true
+        format_sql: ${FORMAT_SQL:true}
+        show_sql: ${SHOW_SQL:true}
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
 
@@ -42,4 +42,7 @@ aws:
 
 logging:
   level:
-    com.amazonaws.util.EC2MetadataUtils: error
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: ${EC2_LOGGING_LEVEL:error}

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
 import javax.validation.ConstraintViolationException
 
-
 @RestControllerAdvice
 class GlobalErrorHandler {
 

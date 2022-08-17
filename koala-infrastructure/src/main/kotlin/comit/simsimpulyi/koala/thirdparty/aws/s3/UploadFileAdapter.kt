@@ -9,7 +9,7 @@ import java.io.File
 import java.util.*
 
 @Component
-class AwsS3Adapter(
+class UploadFileAdapter(
     private val amazonS3Client: AmazonS3Client,
     private val awsS3Properties: AwsS3Properties
 ) : UploadFilePort {
@@ -19,8 +19,8 @@ class AwsS3Adapter(
 
         amazonS3Client.putObject(
             PutObjectRequest(awsS3Properties.bucket, fileKey, file)
-                .withCannedAcl(CannedAccessControlList.AuthenticatedRead))
+                .withCannedAcl(CannedAccessControlList.AuthenticatedRead)
+        )
         return amazonS3Client.getResourceUrl(awsS3Properties.bucket, fileKey)
     }
-
 }

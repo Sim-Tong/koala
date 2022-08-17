@@ -17,4 +17,4 @@ data class LikeEntityId(
     @ManyToOne
     @JoinColumn(columnDefinition = "BINARY(16)")
     val feed: FeedEntity
-): Serializable
+) : Serializable
