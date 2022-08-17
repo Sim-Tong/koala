@@ -1,5 +1,6 @@
 package comit.simsimpulyi.koala.global.security
 
+import comit.simsimpulyi.koala.domain.user.model.User
 import comit.simsimpulyi.koala.domain.user.spi.PasswordEncodePort
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
@@ -9,12 +10,12 @@ class PasswordEncodeAdapter(
     private val passwordEncoder: PasswordEncoder
 ) : PasswordEncodePort {
 
-    override fun matchPassword(target: String, encrypted: String): Boolean {
-        return passwordEncoder.matches(target, encrypted)
+    override fun compare(targetPassword: String, encryptedPassword: String): Boolean {
+        return passwordEncoder.matches(targetPassword, encryptedPassword)
     }
 
-    override fun passwordEncryption(password: String): String {
-        return passwordEncoder.encode(password)
+    override fun encode(user: User): User {
+        return user.updatePassword(passwordEncoder.encode(user.password))
     }
 
 }

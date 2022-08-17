@@ -18,8 +18,8 @@ class SignupUseCase(
             throw Exception() // TODO
         }
 
-        user.updatePassword(passwordEncodePort.passwordEncryption(user.password))
-
-        saveUserPort.saveUser(user)
+        saveUserPort.saveUser(
+            passwordEncodePort.encode(user)
+        )
     }
 }

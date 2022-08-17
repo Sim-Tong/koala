@@ -1,9 +1,11 @@
 package comit.simsimpulyi.koala.domain.user.spi
 
+import comit.simsimpulyi.koala.domain.user.model.User
+
 interface PasswordEncodePort {
 
-    fun matchPassword(target: String, encrypted: String): Boolean
+    fun compare(targetPassword: String, encryptedPassword: String): Boolean
 
-    fun passwordEncryption(password: String): String
+    fun encode(user: User): User
 
 }
