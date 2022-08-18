@@ -1,6 +1,6 @@
 package comit.simsimpulyi.koala.global.security
 
-import comit.simsimpulyi.koala.domain.user.spi.SecurityPort
+import comit.simsimpulyi.koala.domain.user.service.SecurityPort
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
 

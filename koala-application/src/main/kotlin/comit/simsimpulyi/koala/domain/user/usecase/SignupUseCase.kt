@@ -1,9 +1,9 @@
 package comit.simsimpulyi.koala.domain.user.usecase
 
 import comit.simsimpulyi.koala.domain.user.model.User
+import comit.simsimpulyi.koala.domain.user.service.SecurityPort
 import comit.simsimpulyi.koala.domain.user.spi.QueryUserPort
 import comit.simsimpulyi.koala.domain.user.spi.SaveUserPort
-import comit.simsimpulyi.koala.domain.user.spi.SecurityPort
 import comit.simsimpulyi.koala.domain.user.usecase.dto.DomainSignupRequest
 import comit.simsimpulyi.koala.global.annotation.ApplicationService
 
