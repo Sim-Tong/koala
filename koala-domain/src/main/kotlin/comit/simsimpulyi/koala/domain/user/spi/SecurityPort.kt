@@ -1,4 +1,4 @@
-package comit.simsimpulyi.koala.domain.user.service
+package comit.simsimpulyi.koala.domain.user.spi
 
 interface SecurityPort {
 

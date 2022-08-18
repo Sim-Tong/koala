@@ -1,7 +1,6 @@
 package comit.simsimpulyi.koala.domain.user.usecase
 
 import comit.simsimpulyi.koala.domain.user.model.User
-import comit.simsimpulyi.koala.domain.user.service.SecurityPort
 import comit.simsimpulyi.koala.domain.user.spi.QueryUserPort
 import comit.simsimpulyi.koala.domain.user.spi.SaveUserPort
 import comit.simsimpulyi.koala.domain.user.usecase.dto.DomainSignupRequest
@@ -11,7 +10,7 @@ import comit.simsimpulyi.koala.global.annotation.ApplicationService
 class SignupUseCase(
     private val queryUserPort: QueryUserPort,
     private val saveUserPort: SaveUserPort,
-    private val securityPort: SecurityPort
+    private val
 ) {
 
     fun execute(request: DomainSignupRequest) {
@@ -24,7 +23,7 @@ class SignupUseCase(
                 email = request.email,
                 authority = request.authority,
                 name = request.name,
-                password = securityPort.encode(request.password),
+                password = request.password,
                 id = null
             )
         )
