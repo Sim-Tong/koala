@@ -9,8 +9,7 @@ import comit.simsimpulyi.koala.global.annotation.ApplicationService
 @ApplicationService
 class SignupUseCase(
     private val queryUserPort: QueryUserPort,
-    private val saveUserPort: SaveUserPort,
-    private val
+    private val saveUserPort: SaveUserPort
 ) {
 
     fun execute(request: DomainSignupRequest) {
@@ -19,12 +18,11 @@ class SignupUseCase(
         }
 
         saveUserPort.saveUser(
-            User(
+            User.createUser(
                 email = request.email,
-                authority = request.authority,
-                name = request.name,
                 password = request.password,
-                id = null
+                name = request.name,
+                authority = request.authority
             )
         )
     }
