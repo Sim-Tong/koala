@@ -1,11 +1,12 @@
 package comit.simsimpulyi.koala.domain.user.model
 
+import comit.simsimpulyi.koala.domain.user.spi.SecurityPort
 import comit.simsimpulyi.koala.global.annotation.Aggregate
 import java.util.*
 
 @Aggregate
 class User(
-    val id: UUID,
+    val id: UUID?,
 
     val name: String,
 
@@ -25,4 +26,17 @@ class User(
             authority = this.authority
         )
     }
+
+    companion object {
+        fun signUp(name: String, password: String, authority: Authority, email: String): User {
+            return User(
+                name = name,
+                password = SecurityPort::encode.let { password },
+                authority = authority,
+                email = email,
+                id = null
+            )
+        }
+    }
+
 }
