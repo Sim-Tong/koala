@@ -18,7 +18,7 @@ class SignupUseCase(
         }
 
         saveUserPort.saveUser(
-            User.createUser(
+            User.signUp(
                 email = request.email,
                 password = request.password,
                 name = request.name,

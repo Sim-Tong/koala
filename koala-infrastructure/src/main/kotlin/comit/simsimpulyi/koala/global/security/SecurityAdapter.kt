@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
 
 @Component
-class SecurityService(
+class SecurityAdapter(
     private val passwordEncoder: PasswordEncoder
 ) : SecurityPort {
 

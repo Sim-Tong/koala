@@ -28,7 +28,7 @@ class User(
     }
 
     companion object {
-        fun createUser(name: String, password: String, authority: Authority, email: String): User {
+        fun signUp(name: String, password: String, authority: Authority, email: String): User {
             return User(
                 name = name,
                 password = SecurityPort::encode.let { password },
