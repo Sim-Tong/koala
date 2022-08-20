@@ -1,6 +1,9 @@
 # koala
 코틀린을 적용해 간단한 게시판을 만드는 연습을 하는 리포지토리입니다.
 
+## ER Diagram
+<img width="1033" alt="image" src="https://user-images.githubusercontent.com/80632060/185726700-1db4c66f-755e-4034-b191-c017e96d8d51.png">
+
 ## Event Storming
 ### Rule
 <img width="929" alt="image" src="https://user-images.githubusercontent.com/80632060/185726447-e82cb4c8-c236-4667-a645-11f3e5a0dd7f.png">
