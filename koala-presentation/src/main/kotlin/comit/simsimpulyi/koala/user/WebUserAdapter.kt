@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/users")
-class WebSignupAdapter(
+class WebUserAdapter(
     private val signupUseCase: SignupUseCase
 ) {
 
