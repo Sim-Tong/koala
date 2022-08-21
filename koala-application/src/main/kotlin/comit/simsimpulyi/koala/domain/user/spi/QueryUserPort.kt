@@ -5,7 +5,9 @@ import java.util.*
 
 interface QueryUserPort {
 
-    fun queryUserById(userId: UUID): User
+    fun queryUser(userId: UUID): User
+
+    fun queryUser(email: String): User
 
     fun existUserByEmail(email: String): Boolean
 
