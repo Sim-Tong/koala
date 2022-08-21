@@ -12,5 +12,5 @@ interface UserRepository : CrudRepository<UserEntity, UUID> {
 
     fun existsByEmail(email: String): Boolean
 
-
+    fun queryUserEntityByEmail(email: String): UserEntity?
 }
