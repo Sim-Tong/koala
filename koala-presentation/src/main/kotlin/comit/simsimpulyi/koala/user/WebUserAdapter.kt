@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/users")
@@ -18,7 +19,7 @@ class WebUserAdapter(
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
-    fun signUp(request: WebSignupRequest) {
+    fun signUp(@Valid request: WebSignupRequest) {
         signupUseCase.execute(DomainSignupRequest(
             email = request.email,
             name = request.name,
