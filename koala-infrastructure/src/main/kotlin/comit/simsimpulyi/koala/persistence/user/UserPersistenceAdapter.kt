@@ -19,11 +19,11 @@ class UserPersistenceAdapter(
         return userMapper.toDomain(entity)
     }
 
-    override fun queryUser(userId: UUID): User {
+    override fun queryUserById(userId: UUID): User {
         return userMapper.toDomain(queryUserEntityById(userId))
     }
 
-    override fun queryUser(email: String): User {
+    override fun queryUserByEmail(email: String): User {
         return userMapper.toDomain(queryUserEntityByEmail(email))
     }
 

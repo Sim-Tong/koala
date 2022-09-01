@@ -15,7 +15,7 @@ class LoginUseCase(
 ) {
 
     fun execute(request: DomainLoginRequest): LoginTokenResponse {
-        val user = queryUserPort.queryUser(request.email);
+        val user = queryUserPort.queryUserByEmail(request.email);
 
         if(securityPort.compare(request.password, user.password)) {
             throw Exception() // TODO
