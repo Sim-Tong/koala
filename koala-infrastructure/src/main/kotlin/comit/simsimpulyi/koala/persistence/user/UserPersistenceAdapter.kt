@@ -23,8 +23,16 @@ class UserPersistenceAdapter(
         return userMapper.toDomain(queryUserEntityById(userId))
     }
 
+    override fun queryUserByEmail(email: String): User {
+        return userMapper.toDomain(queryUserEntityByEmail(email))
+    }
+
     override fun existUserByEmail(email: String): Boolean {
-        return userRepository.existsByEmail(email);
+        return userRepository.existsByEmail(email)
+    }
+
+    fun queryUserEntityByEmail(email: String): UserEntity {
+        return userRepository.queryUserEntityByEmail(email) ?: throw  Exception() // TODO
     }
 
     fun queryUserEntityById(userId: UUID): UserEntity {
